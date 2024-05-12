@@ -1,15 +1,23 @@
-import React from "react";
-import { DocsThemeConfig } from "nextra-theme-docs";
+import type { DocsThemeConfig } from "nextra-theme-docs";
+import { LocaleSwitch, useConfig, ThemeSwitch } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>Alice's Study Note</span>,
-  project: {
-    link: "https://github.com/alicefromkr",
+  logo: "Alice's Study Note",
+  navbar: {
+    extraContent: () => {
+      return (
+        <>
+          {ThemeSwitch({ lite: true, className: "button-switch theme-switch" })}
+          {LocaleSwitch({ className: "button-switch" })}
+        </>
+      );
+    },
   },
-  docsRepositoryBase: "https://github.com/alicefromkr/Blog",
-  footer: {
-    text: "Alice's Blog powered by Nextra Docs",
-  },
+  i18n: [
+    { locale: "ko", name: "한국어" },
+    { locale: "en", name: "English" },
+    { locale: "zh", name: "简体中文" },
+  ],
 };
 
 export default config;
