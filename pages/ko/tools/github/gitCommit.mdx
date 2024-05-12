@@ -1,0 +1,145 @@
+# git commit message
+
+## commit message?
+
+## 커밋 메세지 구조
+
+커밋 메세지는 크게 머릿말, 본문, 꼬리말 세 파트로 나뉘며 각 파트는 빈줄(blank line)으로 구분합니다.
+
+타입과 제목은 필수로 작성하며
+
+이슈 넘버와 본문, 꼬리말은 선택사항입니다.
+
+> 타입 : 제목
+
+본문
+
+꼬리말
+
+>
+
+### 2. 머릿말
+
+ex. Fix : Change get data api function
+
+ex. Feat !: Add pipeline function
+
+주요한 변화가 있는 경우 : 앞에 !를 표기한 뒤, 본문에서 BREAKING CHANGE: 설명을작성한다.
+
+### 2.1 타입
+
+어떤 의도로 커밋했는지 명시. 첫글자 대문자
+
+만약
+
+1. 기능
+
+- Feat - 새로운 기능 추가
+- Fix - 버그 수정
+- Design - CSS 등 사용자 UI 디자인 수정
+
+1. 개선
+
+- Style - 스타일 (코드 형식, 코드 포멧팅, 세미콜론 누락, 오타 수정, 탭사이즈 변경, 변수명 변경, 코드 자체의 변경이 없는 경우)
+- Refactor - 코드 리팩토링, 새로운 기능이나 버그 수정없이 현재 구현을 개선한 경우
+- Comment - 필요한 주석 추가 및 변경
+
+1. 그외
+
+- Build - 빌드 관련 파일 수정
+- Ci - CI관련 설정 수정
+- Docs - 문서 수정 (ex [README.md](http://README.md) 수정)
+- Test - 테스트 코드 수정
+- Chore - 기타 변경사항 (빌드 스크립트 수정, 패키지 매니저 수정 ex .gitignore 수정)
+
+### 2.2 제목
+
+- 명령형(동사 원형)으로 시작
+- 마지막은 특수문자 사용하지 않는다.
+- 총 글자수는 50자 이내로 작성합니다.
+
+### 3. 본문
+
+본문에서 제목으로 표현불가능한 상세한 내용 적는다.
+
+- 본문 한줄당 72자 이내로 제한
+- 본문 '어떻게' X '무엇을' '왜' O
+- !BREAKING CHANGE - 커다란 API 수정 (ex api의 arguments, return값 변경, DB 테이블 변경, 급하게 치명적인 버그를 고치는 경우)
+
+ex. `- RFIDReader.java: 사용자 요건 사항으로 인한 RFID 인식 기능 추가`
+
+### 4. 꼬리말
+
+어떤 이슈에서 왔는지와 같은 참조 정보들을 추가하는 용도
+
+"유형: #이휴번호" 형식으로 사용
+
+여러개의 이슈 번호를 적을 때는 쉼표로 구분합니다.
+
+(ex Fixes: #45 Related to: #34, #23)
+
+이슈 트래커 유형은 다음 중 하나를 사용합니다.
+
+- Fixes: 이슈 수정중 (아직 해결되지 않은 경우)
+
+- Resolves: 이슈를 해결했을 때 사용
+
+- Ref: 참고할 이슈가 있을 때 사용
+
+- Related to: 해당 커밋에 관련된 이슈번호 (아직 해결되지 않은 경우)
+
+이슈를 닫는 키워드를 사용한다면 main브랜치로 푸시할 때 이슈를 닫게 된다.
+
+> 키워드 #이슈번호
+
+github가 인식하는 키워드 종류는 다음과 같다
+
+일반 개발 이슈
+
+- close
+- closes
+- closed
+
+버그 픽스, 핫 픽스 이슈
+
+- fix
+- fixes
+- fixed
+
+문의나 요청사항에 대응한 이슈
+
+- resolve
+- resolves
+- resolved
+-
+
+jira를 사용할 경우 refs FIB-123과 같이 달으면 된다.
+
+### 참고자료
+
+[https://overcome-the-limits.tistory.com/entry/협업-협업을-위한-기본적인-git-커밋컨벤션-설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-git-%EC%BB%A4%EB%B0%8B%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0) - TYPE 종류, 꼬리말
+
+[https://medium.com/hashbox/git-commit-메세지-규칙-conventional-commits-71710f7f53c](https://medium.com/hashbox/git-commit-%EB%A9%94%EC%84%B8%EC%A7%80-%EA%B7%9C%EC%B9%99-conventional-commits-71710f7f53c) - !, JIRA
+
+[https://junhyunny.github.io/information/github/git-commit-message-rule/#23-본문body](https://junhyunny.github.io/information/github/git-commit-message-rule/#23-%EB%B3%B8%EB%AC%B8body) - 예시, 머릿말 키워드 종류
+
+— 재연
+
+### **Rules to live by for commit messages:**
+
+- Don’t end your commit message with a period.
+- Keep your commit messages to 50 characters or less. Add extra detail in the extended description window if necessary. This is located just below the subject line.
+- Use active voice. For example, "add" instead of "added" and "merge" instead of "merged".
+- Think of your commit as expressing intent to introduce a change.
+
+Automated Commit
+
+https://github.com/conventional-changelog/standard-version
+
+Emoji
+
+[gitmoji](https://gitmoji.dev/)
+
+Git Convention (KR)
+
+[좋은 git 커밋 메시지를 작성하기 위한 8가지 약속](https://djkeh.github.io/articles/How-to-write-a-git-commit-message-kor/)

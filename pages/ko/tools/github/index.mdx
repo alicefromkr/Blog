@@ -1,1 +1,211 @@
+import { Steps } from "nextra/components";
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
 # GitHub 기본 튜토리얼
+
+## 0. VSCode에 Git 환경 구성하기
+
+<Steps>
+
+### Step 1. Git 설치하기
+
+[git-scm](https://git-scm.com/downloads)에 들어가서 컴퓨터 운영체제에 맞춰서 git 설치
+
+### Step 2. VSCode 설치하기
+
+[Microsoft VSCode](https://code.visualstudio.com/download)에서 VSCode 설치
+
+### Step 3. git config
+
+<Callout>
+  `git config` 를 통해서 내 컴퓨터에 내 git 계정 정보를 등록해야 내 git에 접근이
+  가능하다. 컴퓨터에 명령프롬프트/터미널을 열어서 git config를 아래와 같이
+  등록한다.
+
+- 윈도우: 명령 프롬프트
+- 맥/Linux: 터미널
+
+</Callout>
+
+```bash filename="Terminal" {2,6,9,12} showLineNumbers
+## git 버전 확인 하기
+alice@Alice-Mac ~ % git --version
+git version 2.38.1
+
+## github username 등록
+alice@Alice-Mac ~ % git config --global user.name "Alice"
+
+## github 계정 이메일 등록
+alice@Alice-Mac ~ % git config --global user.email jaeyeon0921@gmail.com
+
+## git 구성 잘되었는지 확인
+alice@Alice-Mac ~ % git config --list
+user.name=Alice
+user.email=jaeyeon0921@gmail.com
+```
+
+### Step 4. VSCode Extension 설치
+
+<Callout>
+  VSCode에는 git 관련해서 다양한
+  [extension](https://marketplace.visualstudio.com/VSCode)을 제공한다.
+</Callout>
+
+#### 추천 1. [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+
+<Callout type="warning" emoji="🔧">
+  **1.** VSCode를 열고, 옆에 Extension 클릭하고 git graph 검색후 아래 이미지에
+  나온 extension 선택하고 `install` 클릭
+</Callout>
+![GitGraphMarket](/img/gitrepo/gitgraph.png)
+
+<Callout type="warning" emoji="🔧">
+  **2.** VSCode의 source code 섹션에, 상단에 검색 위에 git graph 버튼을 클릭해서
+  보면, git commit과 브랜치 등을 볼 수 있다.
+</Callout>
+![GitGraphUsage](/img/gitrepo/gitgraphuse.png)
+
+#### 추천 2. [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
+<Callout type="warning" emoji="🔧">
+  **1.** VSCode를 열고, 옆에 Extension 클릭하고 gitlens 검색후 아래 이미지에
+  나온 extension 선택하고 `install` 클릭
+</Callout>
+![GitLensMarket](/img/gitrepo/gitlens.png)
+
+사실 코드 변경 기록 확인하기 위해 쓰긴 하는데, 많은 기능
+
+</Steps>
+
+## 1. 신규 프로젝트 시작하기
+
+### Case 1. 혼자하는 프로젝트
+
+<Callout type="warning" emoji="🔧">
+  **1.** 개인 repository에 들어가서 **`New`** 버튼 클릭
+</Callout>
+
+![createrepobutton](/img/gitrepo/createnewrepo.png)
+
+<Callout type="warning" emoji="🔧">
+
+**2.** **`Repository name`** 을 설정하고, **`Description`** 에 프로젝트에 대해 간략하게 설명하기.
+
+`Descritption`은 꼭 추가하지 않아도 되지만, 미래를 생각하면, 추가하는 것을 추천.
+
+**`template`** 부분은 [Case 2. 남의 프로젝트 가져와서 사용하기](#2-남의-프로젝트-가져와서-사용하기-template) 참고
+
+<br />
+</Callout>
+
+<Callout type="error" emoji="❗️">
+  **repository 이름 생성 규칙**
+
+1. repository 이름은 **소문자로**
+2. 특수문자는 **-** 또는 **\_** 사용
+3. repository 이름만으로도 뭐하는 repository인지 알 수 있도록 **명시**하기. 예시: `github-study` => 깃헙 스터디용 repo
+4. 구분이 필요시 앞에 **prefix** 또는 **suffix** 추가 해서 일관성 유지
+   - **prefix 예시:** `docker-project`, `kube-project`, `terraform-project`
+   - **suffix 예시**: `project-frontend`, `project-backend`, `project-database`
+
+<br />
+</Callout>
+
+<Callout type="warning" emoji="🔧">
+  **3.** repository **공개/비공개** 설정하기
+
+**`public`** 설정 시 누구나 내 repository를 볼 수 있고, 퍼 갈 수 있다.
+
+**`private`** 설정 시 오로지 나 또는 내가 초대한 사람들만 repository를 볼 수 있고 사용 할 수 있다.
+
+<br />
+
+</Callout>
+
+<Callout type="warning" emoji="🔧">
+  **4.** 프로젝트를 설명하는 **`README`** 파일 추가하기
+
+**`REDME.md`** 는 [마크다운](https://www.markdownguide.org/getting-started/) 파일로
+
+**`private`** 설정 시 오로지 나 또는 내가 초대한 사람들만 repository를 볼 수 있고 사용 할 수 있다.
+
+<br />
+
+</Callout>
+
+<Callout type="warning" emoji="🔧">
+  **5.** git에 **안올라갔으면** 하는 파일들을 기록할 수 있는 **`.gitignore`** 미리 추가하기
+
+보통 라이브러리나 프레임워크를 사용 할 때 `.gitignore` 가 함께 생성되지만, 미리 `.gitignore` 를 생성해서 추가 할 수 있다.
+
+<br />
+
+</Callout>
+
+<Callout type="warning" emoji="🔧">
+  **6.** **`License`** 의 경우 MIT License 추천!
+
+더 많은 License 관련 정보는 [여기](https://docs.github.com/ko/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)서 확인!
+
+<br />
+
+</Callout>
+
+<Callout type="warning" emoji="🔧">
+  **7.** **`Create repository`** 클릭
+<br />
+
+</Callout>
+
+<br />
+<div className="flex justify-center gap-3">
+  <Image
+    src="/img/gitrepo/newreponame.png"
+    alt="Hello"
+    width={400}
+    height={400}
+  />
+  <Image
+    src="/img/gitrepo/newreporest.png"
+    alt="Hello"
+    width={400}
+    height={400}
+  />
+</div>
+
+<br />
+
+**생성된 repository 확인**
+
+<br />
+
+![newrepo](/img/gitrepo/createnewrepo.png)
+
+### Case 2. 팀 프로젝트
+
+## 2. 남의 프로젝트 가져와서 사용하기 (template)
+
+## 3. 프로젝트에 기여하기 (fork)
+
+## Git Flow
+
+```bash filename="Bash" {1} showLineNumbers
+alice@Alice-Mac github-study % git flow init
+
+Which branch should be used for bringing forth production releases?
+   - develop
+   - main
+Branch name for production releases: [main]
+
+Which branch should be used for integration of the "next release"?
+   - develop
+Branch name for "next release" development: [develop]
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? []
+```
