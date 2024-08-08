@@ -1,19 +1,27 @@
 export default {
   index: {
     title: "Home",
-    type: "page",
     display: "hidden",
+    type: "page",
   },
-  tutorial: {
-    title: "Tutorials",
+  notes: {
+    title: "Notes",
     type: "menu",
     items: {
       tools: {
         title: "Tools",
-        type: "page",
-        href: "/en/tools",
+        href: "/en/notes/tools",
       },
     },
   },
-  tools: "Tool List",
+  study: {
+    title: "Study",
+    type: "menu",
+    items: {
+      awscloudschool: {
+        title: "AWS Cloud School",
+        href: "/en/study/awscloudschool",
+      },
+    },
+  },
 };

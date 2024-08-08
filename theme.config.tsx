@@ -16,7 +16,6 @@ const config: DocsThemeConfig = {
   i18n: [
     { locale: "ko", name: "한국어" },
     { locale: "en", name: "English" },
-    { locale: "zh", name: "简体中文" },
   ],
 };
 

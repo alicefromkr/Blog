@@ -1,7 +1,6 @@
 export default {
   index: {
-    title: "도구 모음집",
-    display: "hidden",
+    title: "기록",
   },
   github: {
     title: "깃헙 튜토리얼",

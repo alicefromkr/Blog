@@ -1,19 +1,27 @@
 export default {
   index: {
     title: "Home",
-    type: "page",
     display: "hidden",
+    type: "page",
   },
-  tutorial: {
-    title: "튜토리얼",
+  notes: {
+    title: "노트",
     type: "menu",
     items: {
       tools: {
         title: "도구모음",
-        type: "page",
-        href: "/ko/tools",
+        href: "/ko/notes/tools",
       },
     },
   },
-  tools: "도구 모음",
+  study: {
+    title: "공부",
+    type: "menu",
+    items: {
+      awscloudschool: {
+        title: "AWS Cloud School 4기",
+        href: "/ko/study/awscloudschool",
+      },
+    },
+  },
 };

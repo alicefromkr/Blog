@@ -1,7 +1,6 @@
 export default {
   index: {
-    title: "Tool List",
-    display: "hidden",
+    title: "Memo",
   },
   github: {
     title: "GitHub Tutorial",

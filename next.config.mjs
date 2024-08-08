@@ -20,7 +20,7 @@ export default withNextra({
   },
   distDir: "./.next",
   i18n: {
-    locales: ["en", "zh", "ko"],
+    locales: ["en", "ko"],
     defaultLocale: "ko",
   },
   redirects: () => [
