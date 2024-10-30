@@ -7,9 +7,11 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head />
         <body>
-          <SkipNavLink styled />
-          <Main />
-          <NextScript />
+          <div className="lined-paper">
+            <SkipNavLink styled />
+            <Main />
+            <NextScript />
+          </div>
         </body>
       </Html>
     );
